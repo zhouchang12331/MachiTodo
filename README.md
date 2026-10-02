@@ -29,7 +29,9 @@
         │   └── config/
         │       ├── CorsConfig.java              # 全局跨域配置
         │       └── GlobalExceptionHandler.java  # 全局异常处理
-        └── resources/application.yml            # 端口 / 数据库 / MyBatis 配置
+        └── resources/
+            ├── application.yml.example          # 配置模板（复制成 application.yml 后填写）
+            └── application.yml                  # 本地实际配置，含密码，不入库
 ```
 
 ---
@@ -46,17 +48,28 @@ mysql -u root -p < sql/schema.sql
 
 脚本会创建 `machi_todo` 库、`task` 表和三条示例数据。
 
-### 2. 改后端数据库连接
+### 2. 配置数据库连接
 
-打开 `backend/src/main/resources/application.yml`，把用户名密码改成你自己的：
+`application.yml` 含数据库账号密码，**没有提交到仓库**。先复制模板再改：
+
+```bash
+cd backend/src/main/resources
+cp application.yml.example application.yml
+```
+
+然后编辑 `application.yml`，把自己的库名、用户名、密码填进去：
 
 ```yaml
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/machi_todo?...&serverTimezone=Asia/Shanghai
-    username: root
-    password: root   # ← 改这里
+    host: localhost        # ← 数据库地址
+    port: 3306
+    database: machi_todo   # ← 库名
+    username: root         # ← 用户名
+    password: 你的密码      # ← 密码
 ```
+
+> `application.yml` 已在 `.gitignore` 里，改完不会被误提交。
 
 ### 3. 启动后端
 

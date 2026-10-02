@@ -1,0 +1,41 @@
+# ===================================================================
+# MachiTodo 后端配置模板
+#
+# 用法：复制本文件为 application.yml（同目录），再按自己的环境改下面几项：
+#   host / port / database / username / password
+#
+# application.yml 已被 .gitignore 忽略，不会提交到仓库，
+# 所以数据库密码可以放心写在本地的 application.yml 里。
+#
+# 启动前请先执行 sql/schema.sql 建库建表。
+# ===================================================================
+server:
+  # 前端 main.js 里的 API_BASE 默认指向 8080，改端口记得同步改前端
+  port: 8080
+
+spring:
+  application:
+    name: machi-todo
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # ↓↓↓ 改这里 ↓↓↓
+    host: localhost
+    port: 3306
+    database: machi_todo
+    username: root
+    password: 换成你自己的密码
+    # ↑↑↑ 改这里 ↑↑↑
+    # url 由上面四项拼出来，useSSL=false 关 SSL 警告，serverTimezone 防时区报错
+    url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/${spring.datasource.database}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+
+# MyBatis 配置
+mybatis:
+  # 打印执行的 SQL 到控制台，方便调试；上线可以换成 logging.level 的方式
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    com.machi.todo: debug
