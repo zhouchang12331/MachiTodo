@@ -1,0 +1,371 @@
+:root {
+  --strawberry: #ffb7c5;
+  --cream: #fff5eb;
+  --mint: #a8e6cf;
+  --cocoa: #6d4c41;
+  --card: #fffaf4;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "M PLUS Rounded 1c", "Hiragino Sans", "PingFang SC", sans-serif;
+  background: var(--cream);
+  color: var(--cocoa);
+  overflow-x: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px 72px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr minmax(220px, 320px);
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.shop-mark {
+  margin: 0 0 8px;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.lede {
+  margin: 0 0 24px;
+  max-width: 36em;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.composer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.composer input {
+  flex: 1 1 220px;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 2px solid var(--cocoa);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--cocoa);
+  font: inherit;
+  font-size: 16px;
+}
+
+.composer input:focus {
+  outline: 3px solid var(--mint);
+  outline-offset: 2px;
+}
+
+.cta {
+  flex: 0 0 auto;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 2px solid var(--cocoa);
+  border-radius: 999px;
+  background: var(--strawberry);
+  color: var(--cocoa);
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--cocoa);
+}
+
+.cta:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--cocoa);
+}
+
+.cta:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--cocoa);
+}
+
+.hero-art {
+  display: flex;
+  justify-content: center;
+}
+
+.blob {
+  width: min(100%, 300px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  background: var(--mint);
+  border-radius: 60% 40% 55% 45%;
+}
+
+.mascot {
+  width: 78%;
+  height: auto;
+}
+
+.menu-card {
+  background: var(--card);
+  border: 2px solid var(--cocoa);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.menu-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 16px 20px;
+}
+
+.menu-head--pink {
+  background: var(--strawberry);
+}
+
+.menu-head p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px dashed var(--cocoa);
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.menu-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--strawberry);
+}
+
+.menu-item .title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-item.is-done .title {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+.delete-btn {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border: 2px solid var(--cocoa);
+  border-radius: 999px;
+  background: var(--mint);
+  color: var(--cocoa);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.delete-btn:hover,
+.cta:focus-visible,
+.delete-btn:focus-visible {
+  outline: 3px solid var(--mint);
+  outline-offset: 2px;
+}
+
+.empty-hint {
+  margin: 0;
+  padding: 28px 20px 32px;
+  text-align: center;
+  color: var(--cocoa);
+}
+
+.empty-hint.is-hidden {
+  display: none;
+}
+
+/* 加载提示：请求后端时出现在列表上方 */
+.loading-hint {
+  margin: 0;
+  padding: 14px 20px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px dashed var(--cocoa);
+  opacity: 0.75;
+}
+
+.loading-hint.is-hidden {
+  display: none;
+}
+
+/* 请求进行中时列表整体变淡，给出"正在刷新"的视觉反馈 */
+.menu-list.is-loading {
+  opacity: 0.45;
+}
+
+/* 错误提示条：默认藏在屏幕外，出错时滑入 */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 20;
+  max-width: min(90vw, 420px);
+  padding: 12px 20px;
+  border: 2px solid var(--cocoa);
+  border-radius: 14px;
+  background: #ffe3e8;
+  color: var(--cocoa);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  box-shadow: 2px 2px 0 var(--cocoa);
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.petals {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -24px;
+  width: 12px;
+  height: 10px;
+  background: var(--strawberry);
+  border-radius: 80% 0 80% 0;
+  opacity: 0.75;
+  animation: drift 18s linear infinite;
+}
+
+.petal:nth-child(1) { left: 8%; animation-duration: 16s; animation-delay: -2s; }
+.petal:nth-child(2) { left: 22%; width: 9px; height: 8px; animation-duration: 21s; animation-delay: -7s; }
+.petal:nth-child(3) { left: 38%; animation-duration: 19s; animation-delay: -11s; }
+.petal:nth-child(4) { left: 52%; width: 14px; height: 11px; animation-duration: 23s; animation-delay: -4s; }
+.petal:nth-child(5) { left: 66%; animation-duration: 17s; animation-delay: -14s; }
+.petal:nth-child(6) { left: 74%; width: 8px; height: 7px; animation-duration: 20s; animation-delay: -9s; }
+.petal:nth-child(7) { left: 86%; animation-duration: 22s; animation-delay: -1s; }
+.petal:nth-child(8) { left: 94%; width: 11px; height: 9px; animation-duration: 18s; animation-delay: -16s; }
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(28px, 55vh, 0) rotate(180deg);
+  }
+  100% {
+    transform: translate3d(-12px, 110vh, 0) rotate(360deg);
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-art {
+    order: -1;
+  }
+
+  .blob {
+    width: 200px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .cta {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal,
+  .cta {
+    animation: none;
+  }
+
+  .cta:hover,
+  .cta:active {
+    transform: none;
+  }
+
+  .toast {
+    transition: none;
+  }
+}

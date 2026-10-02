@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>いちごとカフェ · 今日菜单</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 飘落樱花，动画在 CSS；减弱动态时会停 -->
+  <div class="petals" aria-hidden="true">
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+  </div>
+
+  <main class="page">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="shop-mark">Ichigo Cafe</p>
+        <h1>今日要做的事，写进菜单里</h1>
+        <p class="lede">草莓拿铁、薄荷可可，还有你今天答应自己的那一件事。勾完就划掉，像擦掉杯沿的泡沫。</p>
+
+        <form id="todo-form" class="composer" autocomplete="off">
+          <label class="sr-only" for="todo-input">新任务</label>
+          <input
+            id="todo-input"
+            name="title"
+            type="text"
+            maxlength="120"
+            placeholder="例如：下午三点给猫换水"
+          />
+          <button class="cta" type="submit">写进今日菜单</button>
+        </form>
+      </div>
+
+      <div class="hero-art">
+        <div class="blob">
+          <!-- 猫耳草莓杯吉祥物 -->
+          <svg class="mascot" viewBox="0 0 220 240" role="img" aria-label="草莓猫耳咖啡杯">
+            <ellipse cx="110" cy="218" rx="62" ry="10" fill="#6d4c41" opacity="0.12" />
+            <path d="M68 38 L86 8 L104 38 Z" fill="#ffb7c5" stroke="#6d4c41" stroke-width="3" stroke-linejoin="round" />
+            <path d="M116 38 L134 8 L152 38 Z" fill="#ffb7c5" stroke="#6d4c41" stroke-width="3" stroke-linejoin="round" />
+            <ellipse cx="86" cy="24" rx="6" ry="8" fill="#fff5eb" />
+            <ellipse cx="134" cy="24" rx="6" ry="8" fill="#fff5eb" />
+            <path d="M48 78 C48 52 76 42 110 42 C144 42 172 52 172 78 V168 H48 Z" fill="#fff5eb" stroke="#6d4c41" stroke-width="3" />
+            <path d="M58 78 C62 62 86 56 110 56 C134 56 158 62 162 78" fill="#ffb7c5" stroke="#6d4c41" stroke-width="3" />
+            <path d="M172 96 H196 C208 96 212 110 204 124 C196 138 180 142 172 138" fill="none" stroke="#6d4c41" stroke-width="3" stroke-linecap="round" />
+            <circle cx="88" cy="118" r="7" fill="#6d4c41" />
+            <circle cx="132" cy="118" r="7" fill="#6d4c41" />
+            <circle cx="90" cy="116" r="2.5" fill="#fff5eb" />
+            <circle cx="134" cy="116" r="2.5" fill="#fff5eb" />
+            <path d="M104 132 C110 140 116 140 122 132" fill="none" stroke="#6d4c41" stroke-width="3" stroke-linecap="round" />
+            <circle cx="76" cy="128" r="7" fill="#ffb7c5" opacity="0.85" />
+            <circle cx="144" cy="128" r="7" fill="#ffb7c5" opacity="0.85" />
+            <rect x="70" y="168" width="80" height="22" rx="8" fill="#a8e6cf" stroke="#6d4c41" stroke-width="3" />
+            <text x="110" y="184" text-anchor="middle" font-size="12" font-family="M PLUS Rounded 1c, sans-serif" fill="#6d4c41">-小麻薯</text>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <section class="menu-card" aria-labelledby="menu-heading">
+      <header class="menu-head menu-head--pink">
+        <h2 id="menu-heading">今日菜单</h2>
+        <p id="menu-count">还没有点单</p>
+      </header>
+
+      <!-- 加载提示：请求后端期间显示，数据回来后隐藏 -->
+      <p id="loading-hint" class="loading-hint is-hidden" role="status">正在从后厨端上来…</p>
+
+      <ul id="todo-list" class="menu-list"></ul>
+      <p id="empty-hint" class="empty-hint">杯子还是空的。在上面写一件今天要做的事。</p>
+    </section>
+  </main>
+
+  <!-- 轻量提示条：网络异常等错误信息会在这里弹出 -->
+  <div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
